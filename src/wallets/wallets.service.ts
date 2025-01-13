@@ -29,7 +29,9 @@ export class WalletsService {
 
     wallet.isActive = 0; // Ensure wallet is not active
 
-    const user = await this.usersService.findOneById(wallet.user.id)
+    console.log(wallet.user.id);
+    const user = await this.usersService.findOneById(wallet.user.id); // !!!
+    console.log(wallet.user.id);
     if (!user) throw new NotFoundException('User associated with the wallet not found.')
     if (!user.isVerified) throw new BadRequestException('User account is not verified.')
 
